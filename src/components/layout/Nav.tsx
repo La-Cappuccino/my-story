@@ -11,8 +11,8 @@ const NAV_LINKS = [
   { label: "Story",    href: "/#story" },
   { label: "Projects", href: "/#projects" },
   { label: "Stack",    href: "/#stack" },
+  { label: "Universe", href: "/universe" },
   { label: "Music",    href: "/#music" },
-  { label: "Blog",     href: "/blog" },
 ] as const;
 
 function ThemeToggle() {
