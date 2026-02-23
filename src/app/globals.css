@@ -1,26 +1,299 @@
 @import "tailwindcss";
 
+/* ============================================================
+   Afro-Nordic Futurism — Design Token System
+   Allan Kisuule · echoalgoridata.no
+   ============================================================ */
+
+@theme {
+  /* Brand palette */
+  --color-gold:           #D97706;
+  --color-gold-light:     #F59E0B;
+  --color-gold-dim:       #92400E;
+  --color-blue:           #2563EB;
+  --color-blue-light:     #3B82F6;
+  --color-blue-dim:       #1E3A8A;
+  --color-emerald:        #059669;
+  --color-emerald-light:  #10B981;
+  --color-emerald-dim:    #064E3B;
+
+  /* Surface tokens — dark mode defaults */
+  --color-dark-bg:        #0C0A09;
+  --color-dark-surface:   #141210;
+  --color-dark-elevated:  #1C1917;
+  --color-dark-border:    #292524;
+  --color-dark-muted:     #78716C;
+  --color-dark-subtle:    #44403C;
+
+  /* Surface tokens — light mode */
+  --color-light-bg:       #FAFAF9;
+  --color-light-surface:  #F5F5F4;
+  --color-light-elevated: #FFFFFF;
+  --color-light-border:   #E7E5E4;
+  --color-light-muted:    #78716C;
+  --color-light-subtle:   #A8A29E;
+
+  /* Semantic text */
+  --color-text-primary:   #FAFAF9;
+  --color-text-secondary: #D6D3D1;
+  --color-text-muted:     #A8A29E;
+  --color-text-inverse:   #0C0A09;
+
+  /* Typography scale */
+  --font-sans:  var(--font-geist-sans);
+  --font-mono:  var(--font-geist-mono);
+
+  /* Easing */
+  --ease-out-expo:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-expo:     cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-spring:      cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Spacing */
+  --section-padding-x: clamp(1.5rem, 5vw, 6rem);
+  --section-padding-y: clamp(4rem, 10vw, 10rem);
+
+  /* Radii */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-pill: 9999px;
+}
+
+/* ============================================================
+   Light mode overrides — class-based (next-themes)
+   ============================================================ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg:         var(--color-dark-bg);
+  --surface:    var(--color-dark-surface);
+  --elevated:   var(--color-dark-elevated);
+  --border:     var(--color-dark-border);
+  --muted:      var(--color-dark-muted);
+  --subtle:     var(--color-dark-subtle);
+  --text:       var(--color-text-primary);
+  --text-2:     var(--color-text-secondary);
+  --text-3:     var(--color-text-muted);
+  --accent:     var(--color-gold);
+  --accent-2:   var(--color-emerald);
+  --accent-3:   var(--color-blue);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.light {
+  --bg:         var(--color-light-bg);
+  --surface:    var(--color-light-surface);
+  --elevated:   var(--color-light-elevated);
+  --border:     var(--color-light-border);
+  --muted:      var(--color-light-subtle);
+  --subtle:     var(--color-light-border);
+  --text:       #1C1917;
+  --text-2:     #44403C;
+  --text-3:     var(--color-light-muted);
+  --accent:     var(--color-gold);
+  --accent-2:   var(--color-emerald);
+  --accent-3:   var(--color-blue);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ============================================================
+   Base resets
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing:  antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering:          optimizeLegibility;
+  scroll-behavior:         smooth;
+  /* Lenis overrides this; here for fallback */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg);
+  color:            var(--text);
+  font-family:      var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size:        1rem;
+  line-height:      1.6;
+  min-height:       100dvh;
+  transition:       background-color 0.25s var(--ease-out-expo),
+                    color 0.25s var(--ease-out-expo);
+}
+
+/* ============================================================
+   Selection
+   ============================================================ */
+
+::selection {
+  background-color: var(--color-gold);
+  color:            #0C0A09;
+}
+
+::-moz-selection {
+  background-color: var(--color-gold);
+  color:            #0C0A09;
+}
+
+/* ============================================================
+   Scrollbar — thin, on-brand
+   ============================================================ */
+
+::-webkit-scrollbar {
+  width:  6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background:    var(--color-gold-dim);
+  border-radius: var(--radius-pill);
+  transition:    background 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gold-dim) var(--surface);
+}
+
+/* ============================================================
+   Gradient text utility
+   ============================================================ */
+
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--color-gold)          0%,
+    var(--color-gold-light)    30%,
+    var(--color-emerald-light) 70%,
+    var(--color-emerald)       100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip:         text;
+  color:                   transparent;
+}
+
+.gradient-text-blue {
+  background: linear-gradient(
+    135deg,
+    var(--color-blue-light) 0%,
+    var(--color-emerald)    100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip:         text;
+  color:                   transparent;
+}
+
+/* ============================================================
+   Noise overlay utility
+   Used as a pseudo-element on sections for texture
+   ============================================================ */
+
+.noise::before {
+  content:          "";
+  position:         fixed;
+  inset:            0;
+  pointer-events:   none;
+  z-index:          9999;
+  opacity:          0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size:  128px 128px;
+}
+
+/* ============================================================
+   Section layout helper
+   ============================================================ */
+
+.section-container {
+  width:            100%;
+  max-width:        1280px;
+  margin-inline:    auto;
+  padding-inline:   var(--section-padding-x);
+  padding-block:    var(--section-padding-y);
+}
+
+/* ============================================================
+   Focus visible — accessible, on-brand
+   ============================================================ */
+
+:focus-visible {
+  outline:        2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius:  var(--radius-sm);
+}
+
+/* ============================================================
+   Heading ink — subtle underline on hover via gradient
+   ============================================================ */
+
+.link-hover {
+  position:         relative;
+  text-decoration:  none;
+}
+
+.link-hover::after {
+  content:          "";
+  position:         absolute;
+  bottom:           -1px;
+  left:             0;
+  width:            0;
+  height:           1px;
+  background:       linear-gradient(90deg, var(--color-gold), var(--color-emerald));
+  transition:       width 0.3s var(--ease-out-expo);
+}
+
+.link-hover:hover::after {
+  width: 100%;
+}
+
+/* ============================================================
+   Aurora glow — decorative bg used on hero/sections
+   ============================================================ */
+
+.aurora-glow {
+  position:   absolute;
+  border-radius: 50%;
+  filter:     blur(100px);
+  opacity:    0.12;
+  pointer-events: none;
+}
+
+.aurora-glow-gold {
+  background: radial-gradient(circle, var(--color-gold) 0%, transparent 70%);
+}
+
+.aurora-glow-blue {
+  background: radial-gradient(circle, var(--color-blue) 0%, transparent 70%);
+}
+
+.aurora-glow-emerald {
+  background: radial-gradient(circle, var(--color-emerald) 0%, transparent 70%);
+}
+
+/* ============================================================
+   Card surface
+   ============================================================ */
+
+.card-surface {
+  background:    var(--surface);
+  border:        1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition:    border-color 0.2s, box-shadow 0.2s;
+}
+
+.card-surface:hover {
+  border-color: var(--color-gold-dim);
+  box-shadow:   0 0 0 1px var(--color-gold-dim),
+                0 8px 32px -8px rgba(217, 119, 6, 0.15);
 }
