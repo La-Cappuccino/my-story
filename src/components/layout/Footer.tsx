@@ -30,8 +30,18 @@ const SOCIAL_LINKS = [
     ),
   },
   {
-    label: "Echo Algori Data",
+    label: "echoalgoridata.no",
     href:  "https://echoalgoridata.no",
+    icon:  (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" />
+      </svg>
+    ),
+  },
+  {
+    label: "echoalgoridata.com",
+    href:  "https://echoalgoridata.com",
     icon:  (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10" />
@@ -65,6 +75,25 @@ export default function Footer() {
             </Link>
             <p className="text-sm text-[var(--text-3)] leading-snug">
               Fullstack Developer &amp; AI Engineer
+              <br />
+              Founder,{" "}
+              <a
+                href="https://echoalgoridata.no"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[var(--accent)] transition-colors duration-200"
+              >
+                echoalgoridata.no
+              </a>
+              {" & "}
+              <a
+                href="https://echoalgoridata.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[var(--accent)] transition-colors duration-200"
+              >
+                .com
+              </a>
               <br />
               Oslo, Norway
             </p>

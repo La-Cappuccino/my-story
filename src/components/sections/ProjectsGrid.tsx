@@ -3,6 +3,7 @@
 import { useState, useRef, MouseEvent } from "react";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
+import Image from "next/image";
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                               */
@@ -18,7 +19,11 @@ interface Project {
   stack: string[];
   liveUrl?: string;
   githubUrl?: string;
-  /** Gradient stop colours for the screenshot placeholder */
+  /** Real screenshot — generate with Nano Banana Pro prompts in IMAGE_PROMPTS.md */
+  image?: string;
+  /** Alt text for the screenshot */
+  imageAlt?: string;
+  /** Gradient stop colours for the screenshot placeholder (used when no image) */
   gradientFrom: string;
   gradientTo: string;
 }
@@ -183,25 +188,40 @@ function ProjectCard({ project }: { project: Project }) {
       }}
       className="card-surface group relative flex flex-col overflow-hidden"
     >
-      {/* Screenshot placeholder */}
+      {/* Screenshot / placeholder */}
       <div
         className="relative h-44 w-full overflow-hidden"
         style={{
-          background: `linear-gradient(135deg, ${project.gradientFrom}33 0%, ${project.gradientTo}33 100%)`,
+          background: project.image
+            ? "var(--surface)"
+            : `linear-gradient(135deg, ${project.gradientFrom}33 0%, ${project.gradientTo}33 100%)`,
           borderBottom: "1px solid var(--border)",
         }}
       >
-        {/* Gradient orbs */}
-        <div
-          className="absolute -left-8 -top-8 h-32 w-32 rounded-full blur-2xl"
-          style={{ background: project.gradientFrom, opacity: 0.35 }}
-        />
-        <div
-          className="absolute -bottom-8 -right-8 h-32 w-32 rounded-full blur-2xl"
-          style={{ background: project.gradientTo, opacity: 0.35 }}
-        />
+        {project.image ? (
+          /* Real screenshot generated with Nano Banana Pro */
+          <Image
+            src={project.image}
+            alt={project.imageAlt ?? `${project.title} screenshot`}
+            fill
+            className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
+        ) : (
+          <>
+            {/* Gradient orbs */}
+            <div
+              className="absolute -left-8 -top-8 h-32 w-32 rounded-full blur-2xl"
+              style={{ background: project.gradientFrom, opacity: 0.35 }}
+            />
+            <div
+              className="absolute -bottom-8 -right-8 h-32 w-32 rounded-full blur-2xl"
+              style={{ background: project.gradientTo, opacity: 0.35 }}
+            />
+          </>
+        )}
         {/* Category badge */}
-        <div className="absolute left-3 top-3 flex gap-1.5">
+        <div className="absolute left-3 top-3 flex gap-1.5 z-10">
           {project.categories.slice(0, 2).map((cat) => (
             <span
               key={cat}
@@ -219,7 +239,7 @@ function ProjectCard({ project }: { project: Project }) {
         </div>
         {/* Shine overlay */}
         <div
-          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100 z-20"
           style={{
             background: `radial-gradient(circle at ${tilt.shine.x}% ${tilt.shine.y}%, rgba(255,255,255,0.08) 0%, transparent 60%)`,
           }}

@@ -94,10 +94,12 @@ const STACK: StackCategory[] = [
   {
     name: "AI Tools",
     skills: [
-      { name: "Claude Code",   level: "Expert"     },
-      { name: "Cursor",        level: "Expert"     },
-      { name: "Midjourney",    level: "Advanced"   },
-      { name: "ElevenLabs",    level: "Proficient" },
+      { name: "Claude Code",       level: "Expert"     },
+      { name: "Google Antigravity", level: "Expert"    },
+      { name: "Cursor",            level: "Expert"     },
+      { name: "Nano Banana Pro",   level: "Expert"     },
+      { name: "Midjourney",        level: "Advanced"   },
+      { name: "ElevenLabs",        level: "Proficient" },
     ],
   },
 ];
@@ -217,15 +219,17 @@ function AIWorkflowCard() {
           <p className="text-sm leading-relaxed text-[var(--color-text-secondary)]">
             I orchestrate{" "}
             <span style={{ color: "var(--color-gold)" }}>Claude Code</span>,{" "}
-            <span style={{ color: "#60A5FA" }}>OpenAI Codex</span>,{" "}
+            <span style={{ color: "#60A5FA" }}>Google Antigravity</span>,{" "}
             <span style={{ color: "#60A5FA" }}>Cursor</span>, and{" "}
             <span style={{ color: "var(--color-emerald-light)" }}>Gemini</span>{" "}
             in parallel with{" "}
             <span style={{ color: "var(--color-text-primary)" }}>10+ MCP servers</span>{" "}
             — GitHub, Supabase, Playwright, Context7, Filesystem, Stripe, Mailtrap, and
-            more. Each agent handles a specialised layer of the codebase
-            simultaneously. The result: I ship at the speed of a small team,
-            solo.{" "}
+            more. I use{" "}
+            <span style={{ color: "#F59E0B" }}>Nano Banana Pro</span>{" "}
+            (Google&apos;s Gemini 3 image model) to generate UI mockups before writing
+            a line of code. Each agent handles a specialised layer simultaneously.
+            The result: I ship at the speed of a small team, solo.{" "}
             <span style={{ color: "var(--color-gold)", fontStyle: "italic" }}>
               Not just using AI — orchestrating it.
             </span>

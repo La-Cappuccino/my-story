@@ -8,13 +8,13 @@ import SmoothScrollProvider from "@/components/layout/SmoothScrollProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://allankisuule.no"),
+  metadataBase: new URL("https://allan.echoalgoridata.no"),
   title: {
-    default: "Allan Kisuule — Fullstack Developer & AI Engineer",
+    default: "Allan Kisuule — Fullstack Developer, AI Engineer & Founder",
     template: "%s | Allan Kisuule",
   },
   description:
-    "Fullstack developer and AI engineer based in Oslo. I build production software — React, Next.js, TypeScript, Node.js — augmented by a multi-agent AI workflow that ships at the speed of a small team. Founder of Echo Algori Data. Builder of Afrobeats.no, RNB Vault, and more.",
+    "Fullstack developer, AI engineer, and founder of Echo Algori Data (echoalgoridata.no & echoalgoridata.com) based in Oslo. I build production software — React, Next.js, TypeScript, Node.js — augmented by a multi-agent AI workflow that ships at the speed of a small team. Builder of Afrobeats.no, RNB Vault, and more.",
   keywords: [
     "fullstack developer",
     "AI engineer",

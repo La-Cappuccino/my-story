@@ -9,6 +9,7 @@ const TYPEWRITER_STRINGS = [
   'I build with React & Next.js',
   'I orchestrate AI agents',
   'I ship 3–4 week MVPs',
+  'I founded Echo Algori Data',
   'I DJ as DJ Demure',
 ];
 
@@ -253,7 +254,7 @@ export default function HeroSection() {
             className="text-xs font-semibold tracking-[0.2em] uppercase"
             style={{ color: 'var(--color-gold)', fontVariant: 'small-caps' }}
           >
-            Fullstack Developer &amp; AI Engineer
+            Fullstack Developer · AI Engineer · Founder @ Echo Algori Data
           </motion.p>
 
           {/* Headline */}
