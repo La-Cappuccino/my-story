@@ -2,6 +2,7 @@ export interface AppDefinition {
   id: string;
   name: string;
   icon: string;
+  iconSrc?: string;
   description: string;
   color: string;
 }

@@ -158,12 +158,16 @@
 .os-desktop-icon-emoji {
   font-size: 2.25rem;
   line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
-  transition: transform 0.25s var(--os-ease-spring);
+  transition: transform 0.25s var(--os-ease-spring), filter 0.3s;
 }
 
 .os-desktop-icon:hover .os-desktop-icon-emoji {
   transform: scale(1.12) translateY(-2px);
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 8px rgba(251, 100, 34, 0.35));
 }
 
 .os-desktop-icon-label {

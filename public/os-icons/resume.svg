@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="#FB6422" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Document -->
+  <path d="M16 10h24l8 8v36a2 2 0 0 1-2 2H16a2 2 0 0 1-2-2V12a2 2 0 0 1 2-2z"/>
+  <!-- Fold corner -->
+  <path d="M40 10v8h8"/>
+  <!-- Text lines -->
+  <line x1="20" y1="26" x2="42" y2="26"/>
+  <line x1="20" y1="32" x2="38" y2="32"/>
+  <line x1="20" y1="38" x2="40" y2="38"/>
+  <line x1="20" y1="44" x2="34" y2="44"/>
+  <!-- Timeline dots on left edge -->
+  <circle cx="10" cy="26" r="2" fill="#FB6422" opacity="0.15" stroke="#FB6422"/>
+  <circle cx="10" cy="34" r="2" fill="#FB6422" opacity="0.15" stroke="#FB6422"/>
+  <circle cx="10" cy="42" r="2" fill="#FB6422" opacity="0.15" stroke="#FB6422"/>
+  <line x1="10" y1="28" x2="10" y2="32" opacity="0.4"/>
+  <line x1="10" y1="36" x2="10" y2="40" opacity="0.4"/>
+</svg>

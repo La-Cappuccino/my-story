@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+import { useState } from 'react';
 import { AppDefinition } from './types';
 
 interface IconProps {
@@ -8,6 +10,8 @@ interface IconProps {
 }
 
 export function Icon({ app, onOpen }: IconProps) {
+  const [imgError, setImgError] = useState(false);
+
   return (
     <button
       onClick={onOpen}
@@ -16,7 +20,18 @@ export function Icon({ app, onOpen }: IconProps) {
       aria-label={`Open ${app.name}`}
     >
       <span className="os-desktop-icon-emoji">
-        {app.icon}
+        {app.iconSrc && !imgError ? (
+          <Image
+            src={app.iconSrc}
+            alt={app.name}
+            width={48}
+            height={48}
+            className="pointer-events-none"
+            onError={() => setImgError(true)}
+          />
+        ) : (
+          app.icon
+        )}
       </span>
       <span className="os-desktop-icon-label">
         {app.name}

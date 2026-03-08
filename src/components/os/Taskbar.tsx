@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { AppDefinition } from './types';
 
@@ -33,7 +34,19 @@ export function Taskbar({ apps, openApps, activeApp, onAppClick, time }: Taskbar
                 className={`os-taskbar-btn ${isActive ? 'os-taskbar-btn--active' : ''}`}
                 title={app.name}
               >
-                <span className="text-xl leading-none">{app.icon}</span>
+                <span className="text-xl leading-none">
+                  {app.iconSrc ? (
+                    <Image
+                      src={app.iconSrc}
+                      alt={app.name}
+                      width={24}
+                      height={24}
+                      className="pointer-events-none"
+                    />
+                  ) : (
+                    app.icon
+                  )}
+                </span>
                 {isOpen && (
                   <span className={`os-taskbar-dot ${isActive ? 'os-taskbar-dot--active' : ''}`} />
                 )}

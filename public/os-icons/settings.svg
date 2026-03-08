@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="#FB6422" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Gear outer path -->
+  <path d="M28 10h8l1.5 5.5a17 17 0 0 1 4.8 2.8l5.3-1.8 4 6.9-3.8 3.8a17 17 0 0 1 0 5.6l3.8 3.8-4 6.9-5.3-1.8a17 17 0 0 1-4.8 2.8L36 50h-8l-1.5-5.5a17 17 0 0 1-4.8-2.8l-5.3 1.8-4-6.9 3.8-3.8a17 17 0 0 1 0-5.6l-3.8-3.8 4-6.9 5.3 1.8a17 17 0 0 1 4.8-2.8z" fill="#FB6422" fill-opacity="0.08"/>
+  <path d="M28 10h8l1.5 5.5a17 17 0 0 1 4.8 2.8l5.3-1.8 4 6.9-3.8 3.8a17 17 0 0 1 0 5.6l3.8 3.8-4 6.9-5.3-1.8a17 17 0 0 1-4.8 2.8L36 50h-8l-1.5-5.5a17 17 0 0 1-4.8-2.8l-5.3 1.8-4-6.9 3.8-3.8a17 17 0 0 1 0-5.6l-3.8-3.8 4-6.9 5.3 1.8a17 17 0 0 1 4.8-2.8z"/>
+  <!-- Inner circle -->
+  <circle cx="32" cy="30" r="8"/>
+  <!-- Center dot -->
+  <circle cx="32" cy="30" r="2.5" fill="#FB6422" stroke="none" opacity="0.5"/>
+</svg>
