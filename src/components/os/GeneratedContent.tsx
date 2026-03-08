@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useCallback, useMemo } from 'react';
+import DOMPurify from 'dompurify';
 
 interface GeneratedContentProps {
   html: string;
@@ -54,11 +55,17 @@ export function GeneratedContent({ html, onAction, isStreaming = false }: Genera
     .replace(/^```\s*/gm, '')
     .trim();
 
-  // Ensure iframes have sandbox for security
-  const processedHtml = cleanHtml.replace(
-    /<iframe([^>]*?)(?!\s+sandbox)(.*?)>/gi,
-    '<iframe$1$2 sandbox="allow-scripts allow-same-origin allow-popups" loading="lazy">'
-  );
+  // Sanitize HTML to prevent XSS from LLM output
+  const processedHtml = useMemo(() => {
+    if (typeof window === 'undefined') return cleanHtml;
+    return DOMPurify.sanitize(cleanHtml, {
+      ADD_TAGS: ['iframe'],
+      ADD_ATTR: ['data-action', 'data-url', 'sandbox', 'loading', 'allow', 'src', 'frameborder'],
+      ALLOWED_URI_REGEXP: /^(?:(?:https?|mailto):|[^a-z]|[a-z+.-]+(?:[^a-z+.\-:]|$))/i,
+      FORBID_TAGS: ['script', 'style'],
+      FORBID_ATTR: ['onerror', 'onload', 'onclick', 'onmouseover'],
+    });
+  }, [cleanHtml]);
 
   return (
     <div className="os-content">
