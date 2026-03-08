@@ -46,7 +46,7 @@ export const APPS: AppDefinition[] = [
     name: 'DJ Demure',
     icon: '🎵',
     iconSrc: '/os-icons/dj.svg',
-    description: 'DJ Demure — Afrobeats, R&B, amapiano sets. Mixes, bookings, and the R&B Vault',
+    description: 'DJ Demure — Afrobeats, R&B, amapiano. YouTube: Drop Demand + B4 Drop Demand. Mixes & bookings',
     color: '#FC8B5A',
   },
   {

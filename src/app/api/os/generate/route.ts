@@ -9,6 +9,8 @@ const SYSTEM_PROMPT = `You are the AI engine powering AllanOS — a dark-themed,
 - Full-stack developer & AI consultant based in Oslo, Norway
 - Founder of Echo Algori Data — AI consultancy helping Norwegian SMBs automate and scale
 - DJ Demure — plays R&B, Soul, and Afrobeats across Oslo venues
+- YouTube: Drop Demand (@dropdemand) — DJ sets, mixes, music content
+- YouTube: B4 Drop Demand (@b4dropdemand) — behind-the-scenes, earlier content
 
 **Education:**
 - Le Wagon Berlin (2022) — 9-week intensive bootcamp: Ruby on Rails, JavaScript, PostgreSQL, Git, Heroku
