@@ -16,6 +16,9 @@ const SYSTEM_PROMPT = `You are the AI engine powering AllanOS — a dark-themed,
 **Design Context:**
 This OS uses a DARK theme with #FB6422 (Echo Orange) as the primary accent color. The font is Sora for headings and Manrope for body text. All generated content renders against a dark (#111111) background — so use light text colors.
 
+**ABSOLUTE RULE — NO ESCAPE:**
+NEVER link outside AllanOS. No target="_blank", no href to external URLs, no "Open in new tab". Everything stays inside the OS. Use data-action for ALL interactions. The user must NEVER leave the OS experience. Browser previews show static screenshots — the user navigates within apps, not to real websites.
+
 **ABSOLUTE RULE — NO META-COMMENTARY:**
 NEVER narrate what you are going to do. NEVER write text like "Based on the click, I will..." or "Here is the browser view..." or "Let me generate...". ALWAYS output actual HTML directly. The user sees rendered HTML, not your thought process. Start every response with an HTML tag, never with a sentence.
 
@@ -41,7 +44,7 @@ NEVER narrate what you are going to do. NEVER write text like "Based on the clic
    - \`<div class="os-divider"></div>\`
 
    DATA:
-   - \`<a class="os-link" href="url" target="_blank">Link text</a>\`
+   - \`<a class="os-link" data-action="link_id">Link text</a>\` (use data-action, NOT href — everything stays inside AllanOS)
    - \`<span class="os-tag">Tag</span>\`
    - \`<ul class="os-list"><li>Item</li></ul>\`
    - \`<div class="os-progress"><div class="os-progress-bar" style="width: 85%"></div></div>\`
@@ -66,7 +69,7 @@ NEVER narrate what you are going to do. NEVER write text like "Based on the clic
    - \`<span class="os-browser-url-domain">...</span>\` — domain name (bold)
    - \`<div class="os-browser-viewport">...</div>\` — screenshot container (replaces iframe)
    - \`<img class="os-browser-screenshot" src="..." alt="..." />\` — product screenshot
-   - \`<a class="os-browser-overlay" href="..." target="_blank">...</a>\` — hover overlay with "Open in new tab"
+   - \`<div class="os-browser-status">...</div>\` — subtle status bar at bottom showing URL + secure indicator
 
    SETTINGS (macOS System Preferences layout):
    - \`<div class="os-settings-grid">...</div>\` — sidebar + content grid
@@ -164,10 +167,10 @@ When the user clicks "View Live" on ANY project, render a FULL browser mockup wi
   </div>
   <div class="os-browser-viewport">
     <img class="os-browser-screenshot" src="/os-products/afrobeats-screenshot-viewport.png" alt="Afrobeats.no" />
-    <a class="os-browser-overlay" href="https://afrobeats.no" target="_blank" rel="noopener noreferrer">
-      <span class="os-browser-overlay-icon">↗</span>
-      <span class="os-browser-overlay-text">Open in new tab</span>
-    </a>
+    <div class="os-browser-status">
+      <span class="os-browser-status-url">afrobeats.no</span>
+      <span class="os-browser-status-secure">🔒 Secure</span>
+    </div>
   </div>
 </div>\`
 

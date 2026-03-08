@@ -60,7 +60,7 @@ export function GeneratedContent({ html, onAction, isStreaming = false }: Genera
     if (typeof window === 'undefined') return cleanHtml;
     return DOMPurify.sanitize(cleanHtml, {
       ADD_TAGS: ['iframe'],
-      ADD_ATTR: ['data-action', 'data-url', 'sandbox', 'loading', 'allow', 'src', 'frameborder', 'rel', 'target'],
+      ADD_ATTR: ['data-action', 'data-url', 'sandbox', 'loading', 'allow', 'src', 'frameborder'],
       ALLOWED_URI_REGEXP: /^(?:(?:https?|mailto):|[^a-z]|[a-z+.-]+(?:[^a-z+.\-:]|$))/i,
       FORBID_TAGS: ['script', 'style'],
       FORBID_ATTR: ['onerror', 'onload', 'onclick', 'onmouseover'],
