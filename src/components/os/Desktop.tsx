@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useCallback, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { APPS } from './constants';
 import { AppDefinition } from './types';
@@ -139,6 +140,12 @@ export function Desktop() {
         {/* Base dark */}
         <div className="absolute inset-0 bg-[#0a0a0a]" />
 
+        {/* Wallpaper: Aurora (animated flowing glow) */}
+        <div className="os-wallpaper-aurora" />
+
+        {/* Circuit board traces (EchoAlgoriData DNA) */}
+        <div className="os-wallpaper-circuit" />
+
         {/* Ambient radial glow — gives glass surfaces something to refract */}
         <div className="absolute inset-0 pointer-events-none" style={{
           background: [
@@ -167,8 +174,8 @@ export function Desktop() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="relative z-10 p-8 pt-12 flex flex-wrap content-start gap-1 h-[calc(100vh-5rem)]"
-            style={{ maxWidth: '560px' }}
+            className="relative z-10 p-8 pt-12 flex flex-wrap content-start gap-2 h-[calc(100vh-5rem)]"
+            style={{ maxWidth: '620px' }}
           >
             {APPS.map((app, i) => (
               <motion.div
@@ -228,17 +235,45 @@ export function Desktop() {
         />
       )}
 
+      {/* Echo Robot — floating assistant mascot (bottom-right) */}
+      <AnimatePresence>
+        {bootComplete && !activeApp && (
+          <motion.div
+            initial={{ opacity: 0, y: 40, scale: 0.8 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.9 }}
+            transition={{ delay: 0.8, type: 'spring', damping: 20, stiffness: 200 }}
+            className="os-robot-float"
+          >
+            <div className="os-robot-glow" />
+            <Image
+              src="/os-icons/echo-robot.svg"
+              alt="Echo — AI Assistant"
+              width={90}
+              height={90}
+              className="os-robot-img"
+              draggable={false}
+            />
+            <div className="os-robot-badge">
+              <span className="os-robot-badge-dot" />
+              <span className="os-robot-badge-text">Echo AI</span>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Watermark */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: bootComplete ? 1 : 0 }}
         transition={{ delay: 1.2, duration: 0.8 }}
-        className="fixed top-5 right-6 z-50 flex items-center gap-2"
+        className="fixed top-5 right-6 z-50 flex items-center gap-2.5"
       >
-        <div className="h-px w-8 bg-gradient-to-r from-transparent to-[#FB6422]/40" />
-        <span className="text-white/30 text-xs font-[family-name:var(--font-sora)] tracking-widest uppercase">
+        <div className="h-px w-10 bg-gradient-to-r from-transparent to-[#FB6422]/30" />
+        <span className="text-white/25 text-[10px] font-[family-name:var(--font-sora)] tracking-[0.2em] uppercase">
           AllanOS
         </span>
+        <div className="w-1.5 h-1.5 rounded-full bg-[#FB6422]/40" />
       </motion.div>
     </div>
   );

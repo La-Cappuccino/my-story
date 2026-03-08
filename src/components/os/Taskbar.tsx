@@ -34,17 +34,18 @@ export function Taskbar({ apps, openApps, activeApp, onAppClick, time }: Taskbar
                 className={`os-taskbar-btn ${isActive ? 'os-taskbar-btn--active' : ''}`}
                 title={app.name}
               >
-                <span className="text-xl leading-none">
+                <span className="flex items-center justify-center">
                   {app.iconSrc ? (
                     <Image
                       src={app.iconSrc}
                       alt={app.name}
-                      width={24}
-                      height={24}
-                      className="pointer-events-none"
+                      width={28}
+                      height={28}
+                      className="pointer-events-none select-none"
+                      draggable={false}
                     />
                   ) : (
-                    app.icon
+                    <span className="text-xl leading-none">{app.icon}</span>
                   )}
                 </span>
                 {isOpen && (
