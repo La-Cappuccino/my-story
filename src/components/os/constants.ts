@@ -6,7 +6,7 @@ export const APPS: AppDefinition[] = [
     name: 'About Me',
     icon: '👤',
     iconSrc: '/os-icons/about.svg',
-    description: "Allan Okoth — founder, full-stack developer, DJ. From Kampala to Oslo, the hustle and the why behind it all",
+    description: "Allan Kisuule — full-stack developer, AI consultant, DJ. Le Wagon Berlin grad, building products in Oslo",
     color: '#FB6422',
   },
   {
@@ -14,7 +14,7 @@ export const APPS: AppDefinition[] = [
     name: 'Projects',
     icon: '💼',
     iconSrc: '/os-icons/projects.svg',
-    description: "Allan's real products with live screenshots — Afrobeats.no, R&B Vault, Tamu Plan, Gadgetikk, EchoAlgoriData",
+    description: "Live products with screenshots — Afrobeats.no, R&B Vault, Tamu Plan, Gadgetikk, EchoAlgoriData, client work",
     color: '#E55A1F',
   },
   {
@@ -30,7 +30,7 @@ export const APPS: AppDefinition[] = [
     name: 'Resume',
     icon: '📄',
     iconSrc: '/os-icons/resume.svg',
-    description: 'CV and experience — work history, education, achievements, downloadable resume',
+    description: 'CV — Le Wagon Berlin, Noroff, freelance projects, AI consulting, tech stack timeline',
     color: '#FB6422',
   },
   {
