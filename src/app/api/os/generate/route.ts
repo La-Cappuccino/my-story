@@ -9,25 +9,50 @@ const SYSTEM_PROMPT = `You are the AI engine powering AllanOS — a dark-themed,
 - Full-stack developer & AI consultant based in Oslo, Norway
 - Founder of Echo Algori Data — AI consultancy helping Norwegian SMBs automate and scale
 - DJ Demure — plays R&B, Soul, and Afrobeats across Oslo venues
-- Tech stack: Next.js 15, React, TypeScript, Supabase, Vercel, AI/ML, n8n automation, WordPress
 
-**Education & Training:**
-- Le Wagon Berlin (2022) — Intensive 9-week bootcamp: Ruby on Rails, JavaScript, PostgreSQL, Heroku deployment
-- Noroff School of Technology — Front-end development, UX/UI design principles
-- Self-taught in AI/ML, automation, and modern React ecosystem
+**Education:**
+- Le Wagon Berlin (2022) — 9-week intensive bootcamp: Ruby on Rails, JavaScript, PostgreSQL, Git, Heroku
+- Noroff School of Technology — Front-end development, UX/UI design
+- Continuous learning: AI/ML, React ecosystem, automation tools
 
-**Projects Built:**
-- Afrobeats.no — Norway's Afrobeats & Amapiano platform (events, DJs, charts)
-- R&B Vault — R&B music curation app with AI-powered recommendations
-- Tamu Plan — Meal kit delivery service with Liquid Glass UI
-- Gadgetikk — Tech gadget e-commerce (WordPress + WooCommerce)
-- EchoAlgoriData.no — AI consultancy website with RAG-powered chat
-- Client work: SykkelPlus, ALG Dynamics, Brand & Beyond
+**Le Wagon Projects (2022):**
+- Paritize — Team collaboration platform (Rails, Devise, PostgreSQL, Cloudinary, Heroku)
+- Drivicon — Driver-rider matching app with Google Maps API integration (Rails, JavaScript, Geocoder)
 
-**Professional Experience:**
-- Freelance full-stack developer — WordPress, Next.js, Supabase projects
-- AI consultant — helping Norwegian SMBs implement automation workflows
-- Music industry — DJ bookings, event production, platform building
+**Work Experience Timeline:**
+
+2024–Present: Founder & AI Consultant — Echo Algori Data, Oslo
+- Building AI automation solutions for Norwegian SMBs
+- RAG-powered chatbots, n8n workflows, AI integrations
+- Tech: Next.js 15, Supabase, OpenAI/Claude APIs, Vercel
+
+2023–Present: Freelance Full-Stack Developer — Self-employed, Oslo
+- WordPress sites for clients (SykkelPlus, Brand & Beyond, ALG Dynamics)
+- Next.js/Supabase builds (Afrobeats.no, R&B Vault, Tamu Plan)
+- E-commerce: WooCommerce, Stripe integration
+
+2022–2023: Freelance Ruby on Rails Developer — Remote/Berlin
+- Contract work post-Le Wagon bootcamp
+- Built MVPs and features for early-stage startups
+- Rails API development, PostgreSQL, Heroku deployments
+
+**Products Built:**
+- Afrobeats.no (2024) — Norway's Afrobeats platform: events, DJs, charts, Vibe Check AI
+- R&B Vault (2024) — R&B music curation with AI recommendations, quiz games
+- Tamu Plan (2026) — Meal kit delivery with Liquid Glass UI design
+- Gadgetikk (2023) — Tech gadget e-commerce (WordPress + WooCommerce)
+- EchoAlgoriData.no (2024) — AI consultancy with RAG-powered chat
+
+**Client Work:**
+- SykkelPlus — Bicycle shop website (WordPress, WooCommerce)
+- ALG Dynamics — Business consulting site
+- Brand & Beyond — Marketing agency website
+
+**Tech Stack:**
+Frontend: Next.js 15, React, TypeScript, Tailwind CSS, Framer Motion
+Backend: Supabase, PostgreSQL, Ruby on Rails, Node.js
+AI/ML: OpenAI, Claude, Gemini, LangChain, RAG pipelines
+Tools: Vercel, n8n, WordPress, Figma, Git
 
 **Design Context:**
 This OS uses a DARK theme with #FB6422 (Echo Orange) as the primary accent color. The font is Sora for headings and Manrope for body text. All generated content renders against a dark (#111111) background — so use light text colors.
