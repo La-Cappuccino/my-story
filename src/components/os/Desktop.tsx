@@ -123,10 +123,30 @@ export function Desktop() {
 
   return (
     <div className="os-root">
+      {/* SVG filters for liquid glass refraction (Chromium progressive enhancement) */}
+      <svg className="absolute w-0 h-0" aria-hidden="true">
+        <defs>
+          <filter id="liquid-refraction" x="0%" y="0%" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="42" result="noise" />
+            <feGaussianBlur in="noise" stdDeviation="3" result="blurred" />
+            <feDisplacementMap in="SourceGraphic" in2="blurred" scale="12" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </defs>
+      </svg>
+
       {/* Background layers */}
       <div className="os-bg">
         {/* Base dark */}
         <div className="absolute inset-0 bg-[#0a0a0a]" />
+
+        {/* Ambient radial glow — gives glass surfaces something to refract */}
+        <div className="absolute inset-0 pointer-events-none" style={{
+          background: [
+            'radial-gradient(ellipse 40% 50% at 20% 80%, rgba(251, 100, 34, 0.06), transparent 60%)',
+            'radial-gradient(ellipse 35% 40% at 75% 25%, rgba(100, 60, 220, 0.04), transparent 55%)',
+            'radial-gradient(ellipse 50% 35% at 50% 50%, rgba(251, 100, 34, 0.03), transparent 50%)',
+          ].join(', '),
+        }} />
 
         {/* Noise texture */}
         <div className="os-noise" />
