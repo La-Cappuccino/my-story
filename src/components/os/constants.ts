@@ -6,7 +6,7 @@ export const APPS: AppDefinition[] = [
     name: 'About Me',
     icon: '👤',
     iconSrc: '/os-icons/about.svg',
-    description: "Allan's story — from Uganda to Oslo, the entrepreneurial journey, the why behind the work",
+    description: "Allan Okoth — founder, full-stack developer, DJ. From Kampala to Oslo, the hustle and the why behind it all",
     color: '#FB6422',
   },
   {
@@ -14,7 +14,7 @@ export const APPS: AppDefinition[] = [
     name: 'Projects',
     icon: '💼',
     iconSrc: '/os-icons/projects.svg',
-    description: 'Portfolio of work — Afrobeats.no, R&B Vault, Tamu Plan, EchoAlgoriData, client projects',
+    description: "Allan's real products with live screenshots — Afrobeats.no, R&B Vault, Tamu Plan, Gadgetikk, EchoAlgoriData",
     color: '#E55A1F',
   },
   {
@@ -46,7 +46,7 @@ export const APPS: AppDefinition[] = [
     name: 'DJ Demure',
     icon: '🎵',
     iconSrc: '/os-icons/dj.svg',
-    description: 'The music side — DJ sets, R&B Vault curation, Afrobeats, bookings',
+    description: 'DJ Demure — Afrobeats, R&B, amapiano sets. Mixes, bookings, and the R&B Vault',
     color: '#FC8B5A',
   },
   {
@@ -54,7 +54,7 @@ export const APPS: AppDefinition[] = [
     name: 'Terminal',
     icon: '💻',
     iconSrc: '/os-icons/terminal.svg',
-    description: 'Easter egg — interactive terminal with personality, fun commands',
+    description: 'AllanOS command line — run neofetch, explore projects, and discover easter eggs',
     color: '#FB6422',
   },
   {
@@ -62,7 +62,7 @@ export const APPS: AppDefinition[] = [
     name: 'Settings',
     icon: '⚙️',
     iconSrc: '/os-icons/settings.svg',
-    description: 'OS settings — theme, about this portfolio OS, credits',
+    description: 'System preferences & wallpaper — theme, about AllanOS, credits and tech stack',
     color: '#E55A1F',
   },
 ];

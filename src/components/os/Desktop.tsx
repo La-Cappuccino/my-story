@@ -136,9 +136,9 @@ export function Desktop() {
       </svg>
 
       {/* Background layers */}
-      <div className="os-bg">
+      <div className={`os-bg ${activeApp ? 'os-bg--focused' : ''}`}>
         {/* Base dark */}
-        <div className="absolute inset-0 bg-[#0a0a0a]" />
+        <div className="absolute inset-0" style={{ background: 'var(--os-bg)' }} />
 
         {/* Wallpaper: Aurora (animated flowing glow) */}
         <div className="os-wallpaper-aurora" />
@@ -150,7 +150,7 @@ export function Desktop() {
         <div className="absolute inset-0 pointer-events-none" style={{
           background: [
             'radial-gradient(ellipse 40% 50% at 20% 80%, rgba(251, 100, 34, 0.06), transparent 60%)',
-            'radial-gradient(ellipse 35% 40% at 75% 25%, rgba(100, 60, 220, 0.04), transparent 55%)',
+            'radial-gradient(ellipse 35% 40% at 75% 25%, rgba(80, 30, 120, 0.07), transparent 55%)',
             'radial-gradient(ellipse 50% 35% at 50% 50%, rgba(251, 100, 34, 0.03), transparent 50%)',
           ].join(', '),
         }} />
@@ -165,6 +165,9 @@ export function Desktop() {
 
         {/* Subtle grid pattern */}
         <div className="os-grid-pattern" />
+
+        {/* Vignette — edge darkening for depth focus */}
+        <div className="os-vignette" />
       </div>
 
       {/* Desktop Icons */}
@@ -214,7 +217,7 @@ export function Desktop() {
               <div className="flex items-center justify-center h-full">
                 <div className="text-center space-y-4">
                   <div className="os-loader mx-auto" />
-                  <p className="text-white/40 text-sm font-[family-name:var(--font-manrope)]">
+                  <p className="text-white/70 text-sm font-[family-name:var(--font-manrope)]">
                     Loading {activeApp.name}...
                   </p>
                 </div>
@@ -255,7 +258,13 @@ export function Desktop() {
               draggable={false}
             />
             <div className="os-robot-badge">
-              <span className="os-robot-badge-dot" />
+              <Image
+                src="/os-branding/echo-mark-orange-64.svg"
+                alt=""
+                width={12}
+                height={12}
+                draggable={false}
+              />
               <span className="os-robot-badge-text">Echo AI</span>
             </div>
           </motion.div>
@@ -267,13 +276,20 @@ export function Desktop() {
         initial={{ opacity: 0 }}
         animate={{ opacity: bootComplete ? 1 : 0 }}
         transition={{ delay: 1.2, duration: 0.8 }}
-        className="fixed top-5 right-6 z-50 flex items-center gap-2.5"
+        className="fixed top-5 right-6 z-[45] flex items-center gap-3"
       >
-        <div className="h-px w-10 bg-gradient-to-r from-transparent to-[#FB6422]/30" />
-        <span className="text-white/25 text-[10px] font-[family-name:var(--font-sora)] tracking-[0.2em] uppercase">
+        <div className="h-px w-10 bg-gradient-to-r from-transparent" style={{ '--tw-gradient-to': 'var(--os-orange-glow)' } as React.CSSProperties} />
+        <Image
+          src="/os-branding/echo-mark-orange-64.svg"
+          alt="AllanOS"
+          width={18}
+          height={18}
+          className="opacity-40"
+          draggable={false}
+        />
+        <span className="text-white/50 text-[10px] font-[family-name:var(--font-sora)] tracking-[0.2em] uppercase">
           AllanOS
         </span>
-        <div className="w-1.5 h-1.5 rounded-full bg-[#FB6422]/40" />
       </motion.div>
     </div>
   );

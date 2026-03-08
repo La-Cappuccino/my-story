@@ -38,6 +38,19 @@ export function Window({ app, children, isLoading = false, onClose }: WindowProp
   const rotateX = useTransform(springY, [-200, 200], [2, -2]);
   const rotateY = useTransform(springX, [-200, 200], [-2, 2]);
 
+  // Keyboard shortcuts: Cmd+W / Escape to close
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'w') {
+        e.preventDefault();
+        onClose();
+      }
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', handler);
+    return () => document.removeEventListener('keydown', handler);
+  }, [onClose]);
+
   // Center window on mount
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -75,9 +88,11 @@ export function Window({ app, children, isLoading = false, onClose }: WindowProp
   useEffect(() => {
     if (!isDragging) return;
     const onMove = (e: MouseEvent) => {
+      const w = windowRef.current?.offsetWidth ?? 880;
+      const h = windowRef.current?.offsetHeight ?? 640;
       setPosition({
-        x: e.clientX - dragOffset.current.x,
-        y: Math.max(0, e.clientY - dragOffset.current.y),
+        x: Math.max(-w + 100, Math.min(e.clientX - dragOffset.current.x, window.innerWidth - 100)),
+        y: Math.max(0, Math.min(e.clientY - dragOffset.current.y, window.innerHeight - 80)),
       });
     };
     const onUp = () => setIsDragging(false);
@@ -121,7 +136,6 @@ export function Window({ app, children, isLoading = false, onClose }: WindowProp
         top: isMaximized ? 12 : position.y,
         rotateX: isHovered && !isDragging ? rotateX : 0,
         rotateY: isHovered && !isDragging ? rotateY : 0,
-        transformPerspective: 1200,
       }}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}

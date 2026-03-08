@@ -28,6 +28,15 @@ export function GeneratedContent({ html, onAction, isStreaming = false }: Genera
       const actionId = actionElement.dataset.action || '';
       const elementText = actionElement.textContent || actionElement.dataset.action || '';
       onAction(actionId, elementText);
+      return;
+    }
+
+    // Handle elements with data-url (e.g. "View Live" browser mockups)
+    const urlElement = target.closest('[data-url]') as HTMLElement | null;
+    if (urlElement) {
+      e.preventDefault();
+      const url = urlElement.dataset.url || '';
+      onAction('navigate', url);
     }
   }, [onAction]);
 
@@ -45,13 +54,19 @@ export function GeneratedContent({ html, onAction, isStreaming = false }: Genera
     .replace(/^```\s*/gm, '')
     .trim();
 
+  // Ensure iframes have sandbox for security
+  const processedHtml = cleanHtml.replace(
+    /<iframe([^>]*?)(?!\s+sandbox)(.*?)>/gi,
+    '<iframe$1$2 sandbox="allow-scripts allow-same-origin allow-popups" loading="lazy">'
+  );
+
   return (
     <div className="os-content">
       <div
         ref={containerRef}
         className={`os-generated ${isStreaming ? 'os-streaming' : ''}`}
         // Content sourced from our own API endpoint with controlled system prompt
-        dangerouslySetInnerHTML={{ __html: cleanHtml }}
+        dangerouslySetInnerHTML={{ __html: processedHtml }}
       />
       {isStreaming && (
         <span className="os-cursor" />

@@ -431,7 +431,7 @@ export function LiquidGlassButton({
       borderRadius={12}
       {...props}
     >
-      <span className="font-medium text-gray-900">{children}</span>
+      <span className="font-medium text-white/90">{children}</span>
     </LiquidGlass>
   );
 }

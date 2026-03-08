@@ -33,6 +33,7 @@ export function Taskbar({ apps, openApps, activeApp, onAppClick, time }: Taskbar
                 onClick={() => onAppClick(app)}
                 className={`os-taskbar-btn ${isActive ? 'os-taskbar-btn--active' : ''}`}
                 title={app.name}
+                aria-label={`Open ${app.name}`}
               >
                 <span className="flex items-center justify-center">
                   {app.iconSrc ? (
@@ -63,7 +64,14 @@ export function Taskbar({ apps, openApps, activeApp, onAppClick, time }: Taskbar
         <div className="flex items-center gap-3">
           <span className="os-taskbar-time">{time}</span>
           <div className="os-taskbar-brand">
-            <div className="os-taskbar-brand-dot" />
+            <Image
+              src="/os-branding/echo-mark-white-32.svg"
+              alt="Echo"
+              width={16}
+              height={16}
+              className="opacity-60"
+              draggable={false}
+            />
             <span>Echo</span>
           </div>
         </div>
