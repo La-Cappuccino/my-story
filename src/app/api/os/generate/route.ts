@@ -55,7 +55,7 @@ NEVER narrate what you are going to do. NEVER write text like "Based on the clic
    TERMINAL (for terminal app only):
    - \`<div class="os-terminal"><span class="os-terminal-prompt">allan@os ~$</span> command</div>\`
 
-   BROWSER (for embedding live websites):
+   BROWSER (screenshot-based site preview — NOT iframes):
    - \`<div class="os-browser">...</div>\` — full browser mockup container
    - \`<div class="os-browser-toolbar">...</div>\` — Safari-style toolbar
    - \`<div class="os-browser-nav">...</div>\` — back/forward/refresh button group
@@ -64,7 +64,9 @@ NEVER narrate what you are going to do. NEVER write text like "Based on the clic
    - \`<span class="os-browser-url-lock">🔒</span>\` — HTTPS lock icon
    - \`<span class="os-browser-url-text">...</span>\` — URL path text
    - \`<span class="os-browser-url-domain">...</span>\` — domain name (bold)
-   - \`<iframe class="os-browser-frame" src="..." title="..."></iframe>\` — embedded website
+   - \`<div class="os-browser-viewport">...</div>\` — screenshot container (replaces iframe)
+   - \`<img class="os-browser-screenshot" src="..." alt="..." />\` — product screenshot
+   - \`<a class="os-browser-overlay" href="..." target="_blank">...</a>\` — hover overlay with "Open in new tab"
 
    SETTINGS (macOS System Preferences layout):
    - \`<div class="os-settings-grid">...</div>\` — sidebar + content grid
@@ -147,7 +149,7 @@ Example structure for one product card:
 Use os-grid to arrange multiple product cards. Always show all 4 products with their real screenshots when the Projects app is first opened. For EchoAlgoriData itself, use the echo-logo.svg from /os-icons/echo-logo.svg.
 
 **BROWSER VIEW — "View Live" actions:**
-When the user clicks "View Live" on ANY project, render a FULL browser mockup with the actual website embedded. Example for Afrobeats.no:
+When the user clicks "View Live" on ANY project, render a FULL browser mockup with a SCREENSHOT of the website (NOT an iframe — iframes are blocked by most sites). Example for Afrobeats.no:
 \`<div class="os-browser">
   <div class="os-browser-toolbar">
     <div class="os-browser-nav">
@@ -160,9 +162,27 @@ When the user clicks "View Live" on ANY project, render a FULL browser mockup wi
       <span class="os-browser-url-text">https://<span class="os-browser-url-domain">afrobeats.no</span></span>
     </div>
   </div>
-  <iframe class="os-browser-frame" src="https://afrobeats.no" title="Afrobeats.no" sandbox="allow-scripts allow-same-origin"></iframe>
+  <div class="os-browser-viewport">
+    <img class="os-browser-screenshot" src="/os-products/afrobeats-screenshot-viewport.png" alt="Afrobeats.no" />
+    <a class="os-browser-overlay" href="https://afrobeats.no" target="_blank" rel="noopener noreferrer">
+      <span class="os-browser-overlay-icon">↗</span>
+      <span class="os-browser-overlay-text">Open in new tab</span>
+    </a>
+  </div>
 </div>\`
-Always include the back button with data-action="back_to_projects" so the user can navigate back to the projects grid.
+
+**IMPORTANT: NEVER use <iframe> tags. Always use screenshot images from /os-products/ with the overlay link.**
+
+Screenshot-to-URL mapping:
+| Product | Screenshot | Live URL |
+|---------|-----------|----------|
+| Afrobeats.no | /os-products/afrobeats-screenshot-viewport.png | https://afrobeats.no |
+| R&B Vault | /os-products/rnb-vault-screenshot.png | https://rnbvault.com |
+| Tamu Plan | /os-products/meal-plan-screenshot.png | https://tamuplan.com |
+| Gadgetikk | /os-products/gadgetikk-ui.png | https://gadgetikk.com |
+| EchoAlgoriData | /os-branding/echo-logo-orange.svg | https://echoalgoridata.no |
+
+Always include a back button with data-action="back_to_projects" so the user can navigate back to the projects grid.
 
 **APP-SPECIFIC UI INSTRUCTIONS:**
 

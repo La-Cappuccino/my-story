@@ -1196,6 +1196,66 @@
   width: 100%;
 }
 
+/* Screenshot-based browser viewport (replaces iframe) */
+.os-browser-viewport {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  background: var(--os-bg);
+}
+
+.os-browser-screenshot {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.os-browser-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(10, 10, 10, 0);
+  text-decoration: none;
+  transition: background 0.3s var(--os-ease);
+  cursor: pointer;
+}
+
+.os-browser-overlay:hover {
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.os-browser-overlay-icon {
+  font-size: 2rem;
+  color: transparent;
+  transition: color 0.3s var(--os-ease), transform 0.3s var(--os-ease);
+}
+
+.os-browser-overlay:hover .os-browser-overlay-icon {
+  color: var(--os-orange);
+  transform: translate(2px, -2px);
+}
+
+.os-browser-overlay-text {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: transparent;
+  letter-spacing: 0.02em;
+  transition: color 0.3s var(--os-ease);
+}
+
+.os-browser-overlay:hover .os-browser-overlay-text {
+  color: var(--os-text);
+}
+
 /* ============================================================
    App-specific layouts — Settings
    ============================================================ */
